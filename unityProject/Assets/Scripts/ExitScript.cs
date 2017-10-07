@@ -10,5 +10,6 @@ public class ExitScript : MonoBehaviour {
 		GameObject ball = col.gameObject;
 
 		ball.transform.position = START_POSITION;
+		PinballManager.instance.UpdateBalls ();
 	}
 }

@@ -98,13 +98,15 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
+'Assets/Scripts/BallScript.cs'
 'Assets/Scripts/BounceImpulse.cs'
+'Assets/Scripts/ChangeScene.cs'
 'Assets/Scripts/CoinScript.cs'
 'Assets/Scripts/ExitScript.cs'
 'Assets/Scripts/Flipper.cs'
 'Assets/Scripts/Managers/MenuManager.cs'
+'Assets/Scripts/Managers/PinballManager.cs'
 'Assets/Scripts/PauseScript.cs'
-'Assets/Scripts/PinballManager.cs'
 'Assets/Scripts/PlungerScript.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
