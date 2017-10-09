@@ -26,7 +26,6 @@ public class PinballManager: MonoBehaviour  {
 	public Text ballsText;
 	int balls = 3;
 
-
 	void Awake () {
 		if (instance == null) {
 			instance = this;
