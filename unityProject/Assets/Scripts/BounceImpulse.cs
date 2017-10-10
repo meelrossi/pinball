@@ -31,7 +31,6 @@ public class BounceImpulse : MonoBehaviour {
 
 		var force = transform.position - col.transform.position;
 		force = force.normalized;
-		force.y = -force.y;
 
 		ball.GetComponent<Rigidbody> ().AddForce (-POWER * force);
 		myLight.enabled = true;

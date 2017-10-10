@@ -64,7 +64,7 @@ public class PinballManager: MonoBehaviour  {
 
 	public void UpdateScore() {
 		score += 10;
-		scoreText.text = "Score: " + score;
+		scoreText.text = score + "";
 		if (score == winScore) {
 			winCanvas.SetActive (true);
 			// Pause the ball.
@@ -77,7 +77,7 @@ public class PinballManager: MonoBehaviour  {
 			gameOverCanvas.SetActive (true);
 			// Pause the ball.
 		} else {
-			ballsText.text = "Balls: " + balls;
+			ballsText.text = balls + "";
 		}
 	}
 
@@ -87,7 +87,7 @@ public class PinballManager: MonoBehaviour  {
 		gameOverCanvas.SetActive (false);
 		score = 0;
 		balls = 3;
-		scoreText.text = "Score: " + score;
-		ballsText.text = "Balls: " + balls;
+		scoreText.text = score + "";
+		ballsText.text = balls + "";
 	}
 }
