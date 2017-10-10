@@ -12,7 +12,8 @@ public class BounceImpulse : MonoBehaviour {
 	void Start () {
 		//GameObject light = GameObject.FindWithTag("Light");
 		//myLight = light.GetComponent<Light>();
-		myLight.intensity = 0;
+		myLight.intensity = 10;
+		myLight.enabled = false;
 	}
 
 	// Update is called once per frame
