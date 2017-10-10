@@ -21,10 +21,12 @@ public class PinballManager: MonoBehaviour  {
 	//Score and lifes.
 	public Text scoreText;
 	int score;
-	static int coins = 7;
+	static int coins = 13;
 	int winScore = 10 * coins;
 	public Text ballsText;
 	int balls = 3;
+
+	private List<GameObject> coinList = new List<GameObject>();
 
 	void Awake () {
 		if (instance == null) {
@@ -50,6 +52,7 @@ public class PinballManager: MonoBehaviour  {
 	public void GoToMainMenu() {
 		winCanvas.SetActive (false);
 		mainMenuCanvas.SetActive (true);
+		RestartGame ();
 	}
 
 	public void PauseGame() {
@@ -89,5 +92,13 @@ public class PinballManager: MonoBehaviour  {
 		balls = 3;
 		scoreText.text = score + "";
 		ballsText.text = balls + "";
+		foreach (GameObject gameObj in coinList) {
+			gameObj.SetActive (true);
+			gameObj.GetComponent<MeshRenderer> ().enabled = true;
+		}
+	}
+
+	public void addCoin(GameObject gameObj) {
+		coinList.Add (gameObj);
 	}
 }
