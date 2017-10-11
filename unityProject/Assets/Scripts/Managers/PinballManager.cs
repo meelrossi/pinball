@@ -15,6 +15,7 @@ public class PinballManager: MonoBehaviour  {
 	public GameObject mainMenuCanvas;
 	public GameObject scoreCanvas;
 	public GameObject winCanvas;
+	public GameObject helpCanvas;
 
 	public BallScript ball;
 
@@ -27,6 +28,8 @@ public class PinballManager: MonoBehaviour  {
 	int balls = 3;
 
 	private List<GameObject> coinList = new List<GameObject>();
+
+	Vector3 START_POSITION = new Vector3(2.75f, -1.033f, -3.42f);
 
 	void Awake () {
 		if (instance == null) {
@@ -50,6 +53,7 @@ public class PinballManager: MonoBehaviour  {
 	}
 
 	public void GoToMainMenu() {
+		helpCanvas.SetActive (false);
 		winCanvas.SetActive (false);
 		mainMenuCanvas.SetActive (true);
 		RestartGame ();
@@ -96,7 +100,14 @@ public class PinballManager: MonoBehaviour  {
 			gameObj.SetActive (true);
 			gameObj.GetComponent<MeshRenderer> ().enabled = true;
 		}
+		ball.transform.position = START_POSITION;
+		ball.PauseBall (false);
 	}
+
+	public void ShowHelp() {
+		mainMenuCanvas.SetActive (false);
+		helpCanvas.SetActive (true);
+	} 
 
 	public void addCoin(GameObject gameObj) {
 		coinList.Add (gameObj);
