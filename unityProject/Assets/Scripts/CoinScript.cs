@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour {
 	
-	public AudioSource coinSound;
+	AudioSource coinSound;
 
 	void Start() {
 		PinballManager.instance.addCoin (this.gameObject);

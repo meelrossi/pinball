@@ -22,7 +22,7 @@ public class PinballManager: MonoBehaviour  {
 	//Score and lifes.
 	public Text scoreText;
 	int score;
-	static int coins = 13;
+	static int coins = 11;
 	int winScore = 10 * coins;
 	public Text ballsText;
 	int balls = 3;
@@ -30,6 +30,9 @@ public class PinballManager: MonoBehaviour  {
 	private List<GameObject> coinList = new List<GameObject>();
 
 	Vector3 START_POSITION = new Vector3(2.75f, -1.033f, -3.42f);
+
+	AudioSource winSource;
+	AudioSource loseSource;
 
 	void Awake () {
 		if (instance == null) {
@@ -44,6 +47,8 @@ public class PinballManager: MonoBehaviour  {
 		gameOverCanvas.SetActive (false);
 		scoreCanvas.SetActive (false);
 		winCanvas.SetActive (false);
+		winSource = winCanvas.GetComponent<AudioSource> ();
+		loseSource = gameOverCanvas.GetComponent<AudioSource> ();
 	}
 
 	public void StartGame() {
@@ -74,7 +79,8 @@ public class PinballManager: MonoBehaviour  {
 		scoreText.text = score + "";
 		if (score == winScore) {
 			winCanvas.SetActive (true);
-			// Pause the ball.
+			ball.PauseBall (true);
+			winSource.Play ();
 		}
 	}
 
@@ -82,7 +88,8 @@ public class PinballManager: MonoBehaviour  {
 		balls--;
 		if (balls == -1) {
 			gameOverCanvas.SetActive (true);
-			// Pause the ball.
+			ball.PauseBall (true);
+			loseSource.Play ();
 		} else {
 			ballsText.text = balls + "";
 		}

@@ -7,13 +7,13 @@ public class BounceImpulse : MonoBehaviour {
 	public float POWER = 1.2f;
 	public Light myLight;
 	int count = 0;
+	public AudioSource bounceSound;
 
 	// Use this for initialization
 	void Start () {
-		//GameObject light = GameObject.FindWithTag("Light");
-		//myLight = light.GetComponent<Light>();
 		myLight.intensity = 10;
 		myLight.enabled = false;
+		bounceSound = GetComponent<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -28,13 +28,15 @@ public class BounceImpulse : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider col) {
-		GameObject ball = col.gameObject;
+		if (col.CompareTag ("Ball")) {
+			GameObject ball = col.gameObject;
 
-		var force = transform.position - col.transform.position;
-		force = force.normalized;
+			var force = transform.position - col.transform.position;
+			force = force.normalized;
 
-		ball.GetComponent<Rigidbody> ().AddForce (-POWER * force);
-		myLight.enabled = true;
-	
+			ball.GetComponent<Rigidbody> ().AddForce (-POWER * force);
+			myLight.enabled = true;
+			bounceSound.Play ();
+		}
 	}
 }
